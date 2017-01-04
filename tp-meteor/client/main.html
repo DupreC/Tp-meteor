@@ -1,0 +1,51 @@
+<head>
+    <title>Manage your farm </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .modifAni{
+            display: inline-block;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Welcom to manage your farm</h1>
+<!-- <div style="float:right;margin-right:14%;">{{> loginButtons}}</div> -->
+
+
+</body>
+<template name="register">
+    <a href="{{pathFor route='animal'}}">Afficher les animaux</a>
+    <div style="float:right;margin-right:14%;">{{> loginButtons}}</div>
+
+    {{> yield}}
+</template>
+<template name="animal">
+    <a href="{{pathFor route='register'}}">Home</a>
+    <ul>
+        {{#each all_animals}}
+        <li class="animal"> {{ name }}
+            <button class="delete">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <button class="appendInput"  >
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </button>
+            <div class="modifAni" id="">
+                <input type="text" id="{{name}}" class="test">
+                <button id="testBtn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+
+    <div id="form">
+        <div>Ajoutez un nouvel animal :</div>
+        <input id="name" type="text" placeholder="Nom" />
+        <button id="submit_animal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+</template>
